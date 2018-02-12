@@ -1,0 +1,20 @@
+{
+  "name": "ahmetgunes/se",
+  "description": "Scheduled Event library for php",
+  "type": "library",
+  "license": "Apache 2.0",
+  "authors": [
+    {
+      "name": "Ahmet Güneş",
+      "email": "ahmetgunes@mail.com"
+    }
+  ],
+  "require": {
+    "php-amqplib/php-amqplib": "^2.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "ScheduledEvent\\": "src/"
+    }
+  }
+}
