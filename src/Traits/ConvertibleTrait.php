@@ -10,9 +10,9 @@ namespace ScheduledEvent\Traits;
 
 trait ConvertibleTrait
 {
-    function toArray()
+    public static function toArray(object $obj)
     {
-        $array = (array)get_object_vars($this);
+        $array = (array)get_object_vars($obj);
         foreach ($array as $key => &$value) {
             if (is_object($value) && method_exists($value, 'toArray')) {
                 $array[$key] = $value->toArray();
@@ -28,28 +28,12 @@ trait ConvertibleTrait
         return $array;
     }
 
-    function toObject($object)
-    {
-        $object = json_decode($object, true);
-        $this->fromArray($object);
-    }
-
-    function fromArray($array)
-    {
-        if ($array) {
-            foreach ($array as $key => $value) {
-                $this->{$key} = $value;
-            }
-        }
-
-        return $this;
-    }
-
     /**
+     * @param object $obj
      * @return string
      */
-    function toJsonObject()
+    public static function toJsonObject(object $obj)
     {
-        return json_encode($this->toArray(), true);
+        return json_encode(self::toArray($obj), true);
     }
 }
