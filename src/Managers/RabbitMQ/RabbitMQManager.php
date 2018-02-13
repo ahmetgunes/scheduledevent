@@ -69,7 +69,7 @@ class RabbitMQManager implements QueueManagerInterface
      * @param bool $exclusive
      * @param bool $noWait
      */
-    public function __construct(RouterInterface $router, AMQPStreamConnection $mq, string $queue, ?string $channelId, bool $noLocal = false, bool $noAck = true, bool $exclusive = false, bool $noWait = false)
+    public function __construct(RouterInterface $router, AMQPStreamConnection $mq, string $queue, ?string $channelId = null, bool $noLocal = false, bool $noAck = true, bool $exclusive = false, bool $noWait = false)
     {
         $this->mq = $mq;
         $this->channelId = $channelId;
@@ -88,7 +88,7 @@ class RabbitMQManager implements QueueManagerInterface
         }
         $convertedMessage = $message->convert();
         if ($convertedMessage instanceof AMQPMessage) {
-            $this->mq->channel($this->channelId)->basic_publish($convertedMessage, $this->queue);
+            $this->mq->channel($this->channelId)->basic_publish($convertedMessage, '', $this->queue);
 
             return true;
         } else {
@@ -103,7 +103,11 @@ class RabbitMQManager implements QueueManagerInterface
 
         $callback = function (AMQPMessage $message) use ($router) {
             $message = RabbitMQMessage::deConvert($message);
-            $router->route($message);
+            if (!is_null($message->getDesignatedDate()) && $message->getDesignatedDate() > time()) {
+                $this->publish($message);
+            } else {
+                $router->route($message);
+            }
         };
 
         $channel->basic_consume($this->queue, 'se_consumer', $this->noLocal, $this->noAck, $this->exclusive, $this->noWait, $callback);

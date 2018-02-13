@@ -9,9 +9,9 @@
 namespace ScheduledEvent\Model\Router;
 
 
-use ScheduledEvent\Model\Message\MessageInterface;
+use ScheduledEvent\Model\Message\AbstractMessage;
 
 interface RouterInterface
 {
-    public function route(MessageInterface $message);
+    public function route(AbstractMessage $message);
 }

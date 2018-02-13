@@ -16,77 +16,77 @@ abstract class AbstractMessage implements MessageInterface
     use ConvertibleTrait;
 
     /**
-     * @var \DateTime
+     * @var int|null
      */
     protected $designatedDate;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $priority;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $type;
 
     /**
      * AbstractMessage constructor.
-     * @param int $type
-     * @param \DateTime|null $designatedDate
+     * @param int|null $designatedDate
      * @param int|null $priority
+     * @param int|null $type
      */
-    public function __construct(int $type, \DateTime $designatedDate = null, int $priority = null)
+    public function __construct(?int $designatedDate = null, ?int $priority = null, ?int $type = null)
     {
-        $this->type = $type;
         $this->designatedDate = $designatedDate;
         $this->priority = $priority;
+        $this->type = $type;
     }
 
     /**
-     * @return \DateTime
+     * @return int|null
      */
-    public function getDesignatedDate(): \DateTime
+    public function getDesignatedDate(): ?int
     {
         return $this->designatedDate;
     }
 
     /**
-     * @param \DateTime $designatedDate
+     * @param int|null $designatedDate
      */
-    public function setDesignatedDate(\DateTime $designatedDate): void
+    public function setDesignatedDate(?int $designatedDate): void
     {
         $this->designatedDate = $designatedDate;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPriority(): int
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param int $priority
+     * @param int|null $priority
      */
-    public function setPriority(int $priority): void
+    public function setPriority(?int $priority): void
     {
         $this->priority = $priority;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getType(): int
+    public function getType(): ?int
     {
         return $this->type;
     }
 
     /**
-     * @param int $type
+     * @param int|null $type
      */
-    public function setType(int $type): void
+    public function setType(?int $type): void
     {
         $this->type = $type;
     }

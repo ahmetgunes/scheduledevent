@@ -22,6 +22,8 @@ class RabbitMQMessage extends AbstractMessage
         if (!is_null($this->priority)) {
             $amqpMessage->set('priority', $this->priority);
         }
+
+        return $amqpMessage;
     }
 
     public static function deConvert($message)
