@@ -1,5 +1,5 @@
 {
-  "name": "ahmetgunes/se",
+  "name": "ahmetgunes/scheduledevent",
   "description": "Scheduled Event library for php",
   "type": "library",
   "license": "Apache 2.0",
