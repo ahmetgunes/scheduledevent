@@ -1,6 +1,5 @@
-##ScheduledEvent
 
-__ScheduledEvent is a library for throwing pseudo-scheduled events from PHP applications__
+#ScheduledEvent
 
 ScheduledEvent uses MQ's for throwing events, you can create a Message and pass it to the Managers. The object of the Manager is to publish the "Event" to the MQ and consume the incoming message and route using a Router. Only RabbitMQ is supported for now
 
