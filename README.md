@@ -1,14 +1,13 @@
 
 # ScheduledEvent
 
-ScheduledEvent uses MQ's for throwing events, you can create a Message and pass it to the Managers. The object of the Manager is to publish the "Event" to the MQ and consume the incoming message and route using a Router. Only RabbitMQ is supported for now
+ScheduledEvent uses MQ's for throwing events, you can create a Message and pass it to the Managers. The object of the Manager is to publish the "Event" to the MQ and consume the incoming message and route using a Router.
 
 ### How to use
 
 Implement the QueueManagerInterface, it should be constructing the Manager which publishes/consumes events. 
 Different events must have their own classes, so that you can have your own data. 
 Your message classes must implement `convert()` and `deConvert()` methods for converting your events to MQ of your choice. 
-You can extend predefined `ScheduledEvent\Managers\RabbitMQ\RabbitMQMessage` class for RabbitMQ, which has the basic `convert()` and `deConvert()` methods.
 
 For example;
 
