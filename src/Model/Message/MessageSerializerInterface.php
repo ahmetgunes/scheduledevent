@@ -11,7 +11,7 @@ namespace ScheduledEvent\Model\Message;
 
 interface MessageSerializerInterface
 {
-    public function convert();
+    public static function convert($message);
 
     public static function deConvert($message);
 }
