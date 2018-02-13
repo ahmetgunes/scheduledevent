@@ -20,6 +20,8 @@ For example;
     }
 ```` 
 
+__You should serialize the messages by implementing MessageSerializerInterfece or send an already serialized one to your managers__
+
 __You are on your own while implementing the `RouterInterface` since you should do what you want with your events. The `$type` attribute can help you with that, but you can also use different Message classes for different events (Recommended way).__
 
 __You should define your queues as priority queues since we use priority attributes.__
