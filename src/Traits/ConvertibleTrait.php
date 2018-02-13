@@ -10,6 +10,13 @@ namespace ScheduledEvent\Traits;
 
 trait ConvertibleTrait
 {
+    /**
+     * @param object $obj
+     * @return array
+     *
+     * Used to convert objects to array.
+     * Can go one step deeper if the object has toArray() method
+     */
     public static function toArray(object $obj)
     {
         $array = (array)get_object_vars($obj);
