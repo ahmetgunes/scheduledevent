@@ -2,7 +2,7 @@
   "name": "ahmetgunes/scheduledevent",
   "description": "Scheduled Event library for php",
   "type": "library",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Ahmet Güneş",
