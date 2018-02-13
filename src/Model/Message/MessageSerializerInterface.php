@@ -9,7 +9,7 @@
 namespace ScheduledEvent\Model\Message;
 
 
-interface MessageInterface
+interface MessageSerializerInterface
 {
     public function convert();
 

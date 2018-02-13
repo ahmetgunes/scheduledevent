@@ -11,7 +11,7 @@ namespace ScheduledEvent\Model\Message;
 
 use ScheduledEvent\Traits\ConvertibleTrait;
 
-abstract class AbstractMessage implements MessageInterface
+abstract class AbstractMessage
 {
     use ConvertibleTrait;
 
